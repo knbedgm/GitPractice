@@ -83,4 +83,59 @@ I noticed that some highlighting was broken when viewing on GitHub, so I'll make
 ```console
 me@laptop ~/GitPractice feature $ git add .
 me@laptop ~/GitPractice feature $ git commit -m "Fix formatting"
+[feature 744027b] Fix formatting
+ 1 file changed, 49 insertions(+), 8 deletions(-)
+me@laptop ~/GitPractice feature $ git push -u origin feature
+Enumerating objects: 5, done.
+Counting objects: 100% (5/5), done.
+Delta compression using up to 16 threads
+Compressing objects: 100% (2/2), done.
+Writing objects: 100% (3/3), 1.64 KiB | 842.00 KiB/s, done.
+Total 3 (delta 0), reused 0 (delta 0), pack-reused 0 (from 0)
+remote:
+remote: Create a pull request for 'feature' on GitHub by visiting:
+remote:      https://github.com/knbedgm/GitPractice/pull/new/feature
+remote:
+To github.com:knbedgm/GitPractice.git
+ * [new branch]      feature -> feature
+branch 'feature' set up to track 'origin/feature'.
+```
+
+Now to switch back to `master` and merge in the changes.
+```console
+me@laptop ~/GitPractice feature $ git checkout master
+error: Your local changes to the following files would be overwritten by checkout:
+        Readme.md
+Please commit your changes or stash them before you switch branches.
+Aborting
+```
+
+Hmm, I'll have to copy the document somewhere else while I do the merge, otherwise I'm going to break things.
+
+Now to revert the changes and actually merge:
+```console
+me@laptop ~/GitPractice feature $ git reset --hard
+HEAD is now at 744027b Fix formatting
+
+me@laptop ~/GitPractice feature $ git checkout master
+Switched to branch 'master'
+Your branch is up to date with 'origin/master'.
+
+me@laptop ~/GitPractice master $ git merge feature
+Updating 9e54639..744027b
+Fast-forward
+ Readme.md | 57 +++++++++++++++++++++++++++++++++++++++++++++++++--------
+ 1 file changed, 49 insertions(+), 8 deletions(-)
+
+```
+
+And now to copy this file back in and commit it so you can read it.
+```console
+me@laptop ~/GitPractice master $ git add .
+me@laptop ~/GitPractice master $ git commit -m "Merge instructions"
+On branch master
+Your branch is ahead of 'origin/master' by 1 commit.
+  (use "git push" to publish your local commits)
+
+nothing to commit, working tree clean
 ```
