@@ -133,9 +133,20 @@ And now to copy this file back in and commit it so you can read it.
 ```console
 me@laptop ~/GitPractice master $ git add .
 me@laptop ~/GitPractice master $ git commit -m "Merge instructions"
-On branch master
-Your branch is ahead of 'origin/master' by 1 commit.
-  (use "git push" to publish your local commits)
+[master 6f7a0f2] Merge instructions
+ 1 file changed, 55 insertions(+)
 
-nothing to commit, working tree clean
+me@laptop ~/GitPractice master $ git push
+Enumerating objects: 5, done.
+Counting objects: 100% (5/5), done.
+Delta compression using up to 16 threads
+Compressing objects: 100% (2/2), done.
+Writing objects: 100% (3/3), 1.29 KiB | 659.00 KiB/s, done.
+Total 3 (delta 1), reused 0 (delta 0), pack-reused 0 (from 0)
+remote: Resolving deltas: 100% (1/1), completed with 1 local object.
+To github.com:knbedgm/GitPractice.git
+   9e54639..6f7a0f2  master -> master
 ```
+
+Looking at it on GitHub, removing the brackets around the branch name didn't fix the formatting... Oh well.
+
